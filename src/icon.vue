@@ -1,15 +1,15 @@
  <template>
   <svg class="g-icon">
-    <use :xlink:href="`#i${name}`">> </use>
+    <use :xlink:href="`#i${name}`" />
   </svg>
 </template>
 
  <script>
 export default {
-  props: ['name'] 
+  props: ["name"]
 };
 </script>
- <style lang="scss">
+ <style lang="scss" scope>
 .g-icon {
   width: 1em;
   height: 1em;
