@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" :class="{error}">
-    <input :value="value" type="text" :disabled="disabled" />
+    <input :value="value" type="text" :disabled="disabled" @change="$emit('change',$event)" />
     <template v-if="error">
       <icon name="error"></icon>
       <span class="errormessage">{{error}}</span>
@@ -72,12 +72,11 @@ $red: #f1453d;
       border-color: $red;
     }
 
-    // &[disabled],
-    // &[readonly] {
-    //   border-color: #bbb;
-    //   color: #bbb;
-    //   cursor: not-allowed;
-    // }
+    &[disabled] {
+      border-color: #bbb;
+      color: #bbb;
+      cursor: not-allowed;
+    }
   }
 }
 </style>
