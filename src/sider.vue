@@ -34,8 +34,5 @@
         transition: all .3s;
     }
 
-    .slide-enter, .slide-leave-to {
-        margin-left: -200px;
-    }
 
 </style>

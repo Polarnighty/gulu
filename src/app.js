@@ -12,6 +12,8 @@ import content from  './content'
 import footer from  './footer'
 import sider from  './sider'
 import header from  './header'
+import toast from  './toast'
+import plugin from './plugin'
 
 Vue.component('g-button', button)
 Vue.component('g-icon', icon)
@@ -26,6 +28,8 @@ Vue.component('g-header', header)
 Vue.component('g-footer', footer)
 Vue.component('g-sider', sider)
 Vue.component('g-content', content)
+Vue.component('g-toast', toast)
+Vue.use(plugin)
 
 new Vue({
     el: '#app',
@@ -36,8 +40,10 @@ new Vue({
     },
     methods: {
         inputChange(e) {
-
             console.log(e.target.value);
+        },
+        showToast(){
+            this.$toast('I am Toast')
         }
     },
 })

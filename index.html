@@ -13,9 +13,6 @@
             box-sizing: border-box;
         }
 
-        /*#app {*/
-        /*    margin: 20px;*/
-        /*}*/
 
         :root {
             --button-height: 32px;
@@ -33,29 +30,11 @@
             font-size: var(--font-size);
         }
 
-        .demo {
-            min-height: 100px;
-            border: 1px solid red;
-        }
 
-        .sider {
-            background: #333;
-            width: 100px;
-        }
-
-        sider.slide-enter, .sider.slide-leave-to {
+        .sider.slide-enter, .sider.slide-leave-to {
             margin-left: -100px;
         }
 
-        .header {
-            background: #999;
-            height: 100px;
-        }
-
-        .footer {
-            background: #ccc;
-            height: 50px;
-        }
 
     </style>
 
@@ -64,16 +43,7 @@
 <body>
 
 <div id="app">
-    <g-layout style="height: 100vh">
-        <g-sider>sider</g-sider>
-        <g-layout>
-            <g-header>header</g-header>
-
-            <g-content>content</g-content>
-            <g-footer>footer</g-footer>
-
-        </g-layout>
-    </g-layout>
+    <button @click="showToast">点我</button>
 </div>
 
 <script src="./src/app.js"></script>
