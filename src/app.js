@@ -7,6 +7,11 @@ import collapse from './collapse'
 import collapseitem from './collapse-item'
 import row from './row'
 import col from './col'
+import layout from  './layout'
+import content from  './content'
+import footer from  './footer'
+import sider from  './sider'
+import header from  './header'
 
 Vue.component('g-button', button)
 Vue.component('g-icon', icon)
@@ -16,6 +21,11 @@ Vue.component('g-collapse', collapse)
 Vue.component('g-collapse-item', collapseitem)
 Vue.component('g-row', row)
 Vue.component('g-col', col)
+Vue.component('g-layout', layout)
+Vue.component('g-header', header)
+Vue.component('g-footer', footer)
+Vue.component('g-sider', sider)
+Vue.component('g-content', content)
 
 new Vue({
     el: '#app',
