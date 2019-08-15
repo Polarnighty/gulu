@@ -43,33 +43,21 @@ new Vue({
             console.log(e.target.value);
         },
         showToast() {
-            this.$toast('I am Toast', {
-                position: 'bottom',
+            this.$toast(`你的余额为 ${parseInt(Math.random() * 100)}你需要充钱`, {
+                 position: 'middle',
                 enableHtml: false,
                 closeButton: {
-                    text: '知道了',
+                    text: '已充值',
                     callback() {
-                        console.log('用户知道了')
+                        console.log('用户升级到心悦三')
                     }
                 },
                 autoCloseDelay: 3,
-                autoClose: true
+                autoClose: false
             })
-        }
-    },
+        },
+},
     created() {
-        this.$toast('你需要充钱', {
-            position: 'center',
-            enableHtml: false,
-            closeButton: {
-                text: '已充值',
-                callback() {
-                    console.log('用户升级到心悦三')
-                }
-            },
-            autoCloseDelay: 3,
-            autoClose: false
 
-        })
     }
 })
