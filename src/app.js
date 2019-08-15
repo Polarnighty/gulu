@@ -7,12 +7,12 @@ import collapse from './collapse'
 import collapseitem from './collapse-item'
 import row from './row'
 import col from './col'
-import layout from  './layout'
-import content from  './content'
-import footer from  './footer'
-import sider from  './sider'
-import header from  './header'
-import toast from  './toast'
+import layout from './layout'
+import content from './content'
+import footer from './footer'
+import sider from './sider'
+import header from './header'
+import toast from './toast'
 import plugin from './plugin'
 
 Vue.component('g-button', button)
@@ -42,23 +42,34 @@ new Vue({
         inputChange(e) {
             console.log(e.target.value);
         },
-        showToast(){
-            this.$toast('I am Toast',{
+        showToast() {
+            this.$toast('I am Toast', {
+                position: 'bottom',
+                enableHtml: false,
                 closeButton: {
-                    text:'知道了',
-                    callback(){
+                    text: '知道了',
+                    callback() {
                         console.log('用户知道了')
                     }
-                }
+                },
+                autoCloseDelay: 3,
+                autoClose: true
             })
         }
     },
-    created(){
-        this.$toast('用户知道了用户知道了用户知道了用户知' +
-            '道了用户知道了用户知道了用户知道了' +
-            '3111111111111133333333321用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用' +
-            '户知道了用户知道了用户知道了用户知道了用' +
-            '户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了用户知道了',
-            {})
+    created() {
+        this.$toast('你需要充钱', {
+            position: 'center',
+            enableHtml: false,
+            closeButton: {
+                text: '已充值',
+                callback() {
+                    console.log('用户升级到心悦三')
+                }
+            },
+            autoCloseDelay: 3,
+            autoClose: false
+
+        })
     }
 })
