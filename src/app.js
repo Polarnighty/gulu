@@ -14,6 +14,11 @@ import sider from './sider'
 import header from './header'
 import toast from './toast'
 import plugin from './plugin'
+import tabs from './tabs'
+import tabsItem from './tabs-item'
+import tabsPine from './tabs-pane'
+import tabsBody from './tabs-body'
+import tabsHeader from './tabs-head'
 
 Vue.component('g-button', button)
 Vue.component('g-icon', icon)
@@ -28,15 +33,18 @@ Vue.component('g-header', header)
 Vue.component('g-footer', footer)
 Vue.component('g-sider', sider)
 Vue.component('g-content', content)
-Vue.component('g-toast', toast)
+Vue.component('g-tabs', tabs)
+Vue.component('g-tabs-head', tabsHeader)
+Vue.component('g-tabs-body', tabsBody)
+Vue.component('g-tabs-item', tabsItem)
+Vue.component('g-tabs-pane', tabsPine)
+
 Vue.use(plugin)
 
 new Vue({
     el: '#app',
     data: {
-        loading1: false,
-        loading2: false,
-        loading3: false,
+        selectedTab: 'chinese'
     },
     methods: {
         inputChange(e) {
