@@ -36,6 +36,7 @@
         },
         mounted() {
             this.eventBus.$emit('update:selected', this.selected)
+            console.log(this.selected);
         }
     }
 </script>

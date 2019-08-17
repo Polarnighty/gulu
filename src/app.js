@@ -44,7 +44,7 @@ Vue.use(plugin)
 new Vue({
     el: '#app',
     data: {
-        selectedTab: 'chinese'
+        selectedTab: 'math'
     },
     methods: {
         inputChange(e) {
