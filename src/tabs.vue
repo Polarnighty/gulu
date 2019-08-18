@@ -39,12 +39,11 @@
                 if(vm.$options.name === 'Tabs-head'){
                     vm.$children.forEach(childVm=>{
                         if(childVm.$options.name === 'Tabs-item' && childVm.name ===this.selected){
-                            console.log(childVm.$el)
                             this.eventBus.$emit('update:selected',this.selected , childVm)
                         }
                     })
                 }
-            })
+            }),
             this.eventBus.$emit('update:selected', this.selected)
         }
     }
