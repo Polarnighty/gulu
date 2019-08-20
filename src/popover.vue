@@ -40,21 +40,22 @@
             positionContent() {
                 const {contentWrapper, triggerWrapper} = this.$refs
                 document.body.appendChild(contentWrapper)
-                let {width, height, top, left} = triggerWrapper.getBoundingClientRect()
-                if (this.position === 'top') {
-                    contentWrapper.style.left = left + window.scrollX + 'px'
-                    contentWrapper.style.top = top + window.scrollY + 'px'
-                } else if (this.position === 'bottom') {
-                    contentWrapper.style.left = left + window.scrollX + 'px'
-                    contentWrapper.style.top = top + height + window.scrollY + 'px'
-                } else if (this.position === 'left') {
-                    let {height: height2} = contentWrapper.getBoundingClientRect()
-                    contentWrapper.style.left = left + window.scrollX + 'px'
-                    contentWrapper.style.top = top + window.scrollY + (height - height2) / 2 + 'px'
-                } else if (this.position === 'right') {
-                    contentWrapper.style.left = left + width + window.scrollX + 'px'
-                    contentWrapper.style.top = top + window.scrollY + 'px'
+                const {width, height, top, left} = triggerWrapper.getBoundingClientRect()
+                const {height: height2} = contentWrapper.getBoundingClientRect()
+                let positions = {
+                    top: {top: top + window.scrollY, left: left + window.scrollX,},
+                    bottom: {top: top + height + window.scrollY, left: left + window.scrollX},
+                    left: {
+                        top: top + window.scrollY + (height - height2) / 2,
+                        left: left + window.scrollX
+                    },
+                    right: {
+                        top: top + window.scrollY + (height - height2) / 2,
+                        left: left + window.scrollX + width
+                    },
                 }
+                contentWrapper.style.left = positions[this.position].left + 'px'
+                contentWrapper.style.top = positions[this.position].top + 'px'
             },
             eventHandler(e) {
                 //
@@ -84,6 +85,22 @@
                         this.open()
                     }
                 }
+            }
+        },
+        mounted () {
+            if (this.trigger === 'click') {
+                this.$refs.popover.addEventListener('click', this.onClick)
+            } else {
+                this.$refs.popover.addEventListener('mouseenter', this.open)
+                this.$refs.popover.addEventListener('mouseleave', this.close)
+            }
+        },
+        destroyed () {
+            if (this.trigger === 'click') {
+                this.$refs.popover.removeEventListener('click', this.onClick)
+            } else {
+                this.$refs.popover.removeEventListener('mouseenter', this.open)
+                this.$refs.popover.removeEventListener('mouseleave', this.close)
             }
         },
     }
