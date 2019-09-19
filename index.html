@@ -31,24 +31,24 @@
         }
 
 
-        .sider.slide-enter, .sider.slide-leave-to {
+        .sider.slide-enter,
+        .sider.slide-leave-to {
             margin-left: -100px;
         }
-
-
     </style>
 
 </head>
 
 <body>
 
-<div id="app" style="padding-top: 100px;padding-left: 100px;">
+    <div id="app" style="padding-top: 100px;padding-left: 100px;">
+        <g-button icon="settings">默认按钮</g-button>
+        <g-button :loading="true">默认按钮</g-button>
+        <g-button disabled>默认按钮</g-button>
+    </div>
 
-
-</div>
-
-<script src="./src/app.js"></script>
-<script src="//at.alicdn.com/t/font_1335033_m1zwmxmf76e.js"></script>
+    <script src="./src/app.js"></script>
+    <script src="//at.alicdn.com/t/font_1335033_m1zwmxmf76e.js"></script>
 
 </body>
 
