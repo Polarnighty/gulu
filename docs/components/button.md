@@ -5,6 +5,6 @@ title: Button
 
 使用方法
 <ClientOnly>
-<button></button>
+<gbutton></gbutton>
 </ClientOnly>
 

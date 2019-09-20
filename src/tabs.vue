@@ -22,7 +22,7 @@
             }
         },
         created() {
-            // this.$emit('update:selected', 'xxx')
+            this.$emit('update:selected', 'xxx')
         },
         data() {
             return {

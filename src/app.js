@@ -21,6 +21,7 @@ import tabsBody from './tabs-body'
 import tabsHeader from './tabs-head'
 import popover from './popover'
 
+Vue.component('g-toast', toast)
 Vue.component('g-button', button)
 Vue.component('g-icon', icon)
 Vue.component('g-button-group', buttonGroup)
@@ -43,13 +44,18 @@ Vue.component('g-popover', popover)
 
 Vue.use(plugin)
 
+
+import test from './test'
+
+Vue.component('g-test', test)
+
 new Vue({
     el: '#app',
     data: {
         selectedTab: 'chinese'
     },
     methods: {
-        yyy(){
+        yyy() {
             console.log('yyy');
         },
         inputChange(e) {
@@ -57,7 +63,7 @@ new Vue({
         },
         showToast() {
             this.$toast(`你的余额为 ${parseInt(Math.random() * 100)}你需要充钱`, {
-                 position: 'middle',
+                position: 'middle',
                 enableHtml: false,
                 closeButton: {
                     text: '已充值',
@@ -69,7 +75,7 @@ new Vue({
                 autoClose: false
             })
         },
-},
+    },
     created() {
 
     }

@@ -1,19 +1,17 @@
 <template>
-  <!-- $emit触发当前组件事件 -->
-  <button class="g-button" :class="{[`icon-${iconPosition}`] : true}" @click="$emit('click')">
+  <button class="g-button" :class="{[`icon-${iconPosition}`]: true}" @click="$emit('click')">
     <g-icon class="icon" v-if="icon  && !loading" :name="icon"></g-icon>
     <g-icon class="loading icon" v-if="loading " name="loading"></g-icon>
-    <div class="content">
-      <slot></slot>
+    <div class="g-button-content">
+      <slot />
     </div>
   </button>
 </template>
 <script>
-import icon from "./icon";
+import Icon from "./icon";
 export default {
-  // props: ["icon", "iconPosition"]
   components: {
-    "g-icon": icon
+    "g-icon": Icon
   },
   props: {
     icon: {},
@@ -22,32 +20,17 @@ export default {
       default: false
     },
     iconPosition: {
-      type: String, //传一个字符串
+      type: String,
       default: "left",
       validator(value) {
-        console.log(value);
-        if (value !== "left" && value !== "right") {
-          return false;
-        } else {
-          return true;
-        }
+        return value === "left" || value === "right";
       }
     }
   }
 };
 </script>
-
-<style lang="scss" scope>
+<style lang="scss" scoped>
 @import "var";
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .g-button {
   font-size: $font-size;
   height: $button-height;
@@ -65,34 +48,28 @@ export default {
   &:active {
     background-color: $button-active-bg;
   }
-
   &:focus {
     outline: none;
   }
-
+  > .g-button-content {
+    order: 2;
+  }
   > .icon {
     order: 1;
     margin-right: 0.1em;
   }
-
-  > .content {
-    order: 2;
-  }
-
   &.icon-right {
-    > .content {
+    > .g-button-content {
       order: 1;
     }
-
     > .icon {
       order: 2;
       margin-right: 0;
       margin-left: 0.1em;
     }
   }
-
   .loading {
     animation: spin 2s infinite linear;
   }
 }
-</style> 
+</style>

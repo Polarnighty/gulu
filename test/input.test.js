@@ -1,24 +1,22 @@
 const expect = chai.expect;
 import Vue from 'vue'
-import Input from '../src/input'
+import Input from '../src/input/input.vue'
 
 Vue.config.productionTip = false
 Vue.config.devtools = false
 
 describe('Input', () => {
-
+  // BDD行为驱动测试
   it('存在.', () => {
-    expect(Input).to.exist
+    expect(Input).to.be.exist
   })
-
-
-  describe('props', () => {
+  describe('props',()=>{
     const Constructor = Vue.extend(Input)
-    let vm
-    afterEach(() => {
+    var vm
+    afterEach(()=>{
       vm.$destroy()
     })
-    it('接收 value', () => {
+    it('接收value', () => {
       vm = new Constructor({
         propsData: {
           value: '1234'
@@ -27,8 +25,7 @@ describe('Input', () => {
       const inputElement = vm.$el.querySelector('input')
       expect(inputElement.value).to.equal('1234')
     })
-
-    it('接收 disabled', () => {
+    it('接收disabled', () => {
       vm = new Constructor({
         propsData: {
           disabled: true
@@ -37,7 +34,7 @@ describe('Input', () => {
       const inputElement = vm.$el.querySelector('input')
       expect(inputElement.disabled).to.equal(true)
     })
-    it('接收 readonly', () => {
+    it('接收readonly', () => {
       vm = new Constructor({
         propsData: {
           readonly: true
@@ -46,11 +43,11 @@ describe('Input', () => {
       const inputElement = vm.$el.querySelector('input')
       expect(inputElement.readOnly).to.equal(true)
     })
-
-    it('接收 error', () => {
+    it('接收error', () => {
       vm = new Constructor({
         propsData: {
-          error: '你错了'
+          icon:'error',
+          error:'你错了'
         }
       }).$mount()
       const useElement = vm.$el.querySelector('use')
@@ -59,23 +56,23 @@ describe('Input', () => {
       expect(errorMessage.innerText).to.equal('你错了')
     })
   })
-  describe('事件', () => {
+  describe('事件',()=>{
     const Constructor = Vue.extend(Input)
     let vm
-    afterEach(() => {
+    afterEach(()=>{
       vm.$destroy()
     })
-    it('支持 change/input/focus/blur 事件', () => {
-      ['change', 'input', 'focus', 'blur']
-        .forEach((eventName) => {
+    it('支持 change 事件',()=>{
+      ['change','input','focus','blur']
+        .forEach((eventName)=>{
           vm = new Constructor({}).$mount()
           const callback = sinon.fake();
-          vm.$on(eventName, callback)
-          //触发input的change 事件
+          vm.$on(eventName,callback)
+          //触发 input的 change事件
           let event = new Event(eventName);
           Object.defineProperty(
-            event, 'target', {
-              value: {value: 'hi'}, enumerable: true
+            event,'target',{
+              value:{value:'hi'},enumerable:true
             }
           )
           let inputElement = vm.$el.querySelector('input')
