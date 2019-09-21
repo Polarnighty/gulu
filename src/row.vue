@@ -17,7 +17,6 @@
                 vm.gutter = this.gutter
             })
         }
-
     }
 </script>
 

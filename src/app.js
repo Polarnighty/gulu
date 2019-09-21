@@ -44,14 +44,10 @@ Vue.component('g-popover', popover)
 
 Vue.use(plugin)
 
-
-import test from './test'
-
-Vue.component('g-test', test)
-
 new Vue({
     el: '#app',
     data: {
+        message:'',
         selectedTab: 'chinese'
     },
     methods: {
