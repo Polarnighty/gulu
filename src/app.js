@@ -5,20 +5,20 @@ import buttonGroup from './button-group'
 import input from './input'
 import collapse from './collapse'
 import collapseitem from './collapse-item'
-import row from './row'
-import col from './col'
-import layout from './layout'
-import content from './content'
-import footer from './footer'
-import sider from './sider'
-import header from './header'
+import row from './grid/row'
+import col from './grid/col'
+import layout from './layout/layout'
+import content from './layout/content'
+import footer from './layout/footer'
+import sider from './layout/sider'
+import header from './layout/header'
 import toast from './toast'
 import plugin from './plugin'
-import tabs from './tabs'
-import tabsItem from './tabs-item'
-import tabsPine from './tabs-pane'
-import tabsBody from './tabs-body'
-import tabsHeader from './tabs-head'
+import tabs from './tabs/tabs'
+import tabsItem from './tabs/tabs-item'
+import tabsPine from './tabs/tabs-pane'
+import tabsBody from './tabs/tabs-body'
+import tabsHeader from './tabs/tabs-head'
 import popover from './popover'
 
 Vue.component('g-toast', toast)
@@ -47,13 +47,10 @@ Vue.use(plugin)
 new Vue({
     el: '#app',
     data: {
-        message:'',
-        selectedTab: 'chinese'
+        message: '',
+        selectedTab: 'woman'
     },
     methods: {
-        yyy() {
-            console.log('yyy');
-        },
         inputChange(e) {
             console.log(e.target.value);
         },

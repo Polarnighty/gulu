@@ -1,13 +1,6 @@
 <template>
-  <div
-    class="col"
-    :class="colClass"
-    :style="{paddingLeft: this.gutter / 2 + 'px',paddingRight: this.gutter / 2 + 'px'
-}"
-  >
-    <div style="border: 1px solid blue;height: 100px;">
-      <slot></slot>
-    </div>
+  <div class="col" :class="colClass" :style="{colStyle}">
+    <slot></slot>
   </div>
 </template>
 
@@ -31,7 +24,6 @@ export default {
     offset: {
       type: [Number, String]
     },
-    phone: { type: Object, validator },
     ipad: { type: Object, validator },
     narrowPc: { type: Object, validator },
     pc: { type: Object, validator },
@@ -42,24 +34,44 @@ export default {
       gutter: 0
     };
   },
+  methods: {
+    createClasses(obj, str = "") {
+      let array = [];
+      if (!obj) {
+        return [];
+      } //如果pc没写，就是 undfined ,没办法获取 undfined 的属性
+      if (obj.span) {
+        array.push(`col-${str}${obj.span}`);
+      }
+      if (obj.offset) {
+        array.push(`offset-${str}${obj.offset}`);
+      }
+      return array;
+    }
+  },
   computed: {
     colClass() {
-      let { span, offset, phone, ipad, narrowPc, pc, widePc } = this;
+      let { span, offset, ipad, narrowPc, pc, widePc } = this;
+      let createClasses = this.createClasses;
       return [
-        span && `col-${span}`,
-        offset && `offset-${offset}`,
-        ...(phone && [`col-phone-${phone.span}`]),
-        ...(ipad && [`col-ipad-${ipad.span}`]),
-        ...(narrowPc && [`col-narrow-pc-${narrowPc.span}`]),
-        ...(pc && [`col-pc-${pc.span}`]),
-        ...(widePc && [`col-wide-pc-${widePc.span}`])
+        ...createClasses({ span, offset }),
+        ...createClasses(ipad, "ipad-"),
+        ...createClasses(narrowPc, "narrow-pc-"),
+        ...createClasses(pc, "pc-"),
+        ...createClasses(widePc, "wide-pc-")
       ];
+    },
+    colStyle() {
+      return {
+        paddingLeft: this.gutter / 2 + "px",
+        paddingRight: this.gutter / 2 + "px"
+      };
     }
   }
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .col {
   height: 100px;
   width: 50%;
