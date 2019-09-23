@@ -48,7 +48,8 @@ new Vue({
     el: '#app',
     data: {
         message: '',
-        selectedTab: 'woman'
+        selectedTab: ['2'],
+        selectedTab2:[2]
     },
     methods: {
         inputChange(e) {

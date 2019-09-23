@@ -11,10 +11,10 @@
 <script>
 import Icon from "./icon";
 export default {
+  name: "GuluButton",
   components: {
     "g-icon": Icon
   },
-  name: "ButtonWheel",
   props: {
     icon: {},
     iconPosition: {
@@ -28,18 +28,10 @@ export default {
       type: Boolean,
       default: false
     },
-    toggle: {
-      type: String
-    },
     circle: {
       type: Boolean,
       default: false
     }
-  },
-  data() {
-    return {
-      toggle
-    };
   }
 };
 </script>

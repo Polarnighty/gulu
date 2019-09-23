@@ -39,6 +39,8 @@
         methods: {
             positionContent() {
                 const {contentWrapper, triggerWrapper} = this.$refs
+                console.log(this.$refs)
+                console.log(contentWrapper)
                 document.body.appendChild(contentWrapper)
                 const {width, height, top, left} = triggerWrapper.getBoundingClientRect()
                 const {height: height2} = contentWrapper.getBoundingClientRect()
@@ -58,7 +60,6 @@
                 contentWrapper.style.top = positions[this.position].top + 'px'
             },
             eventHandler(e) {
-                //
                 if (this.$refs.contentWrapper &&
                     (this.$refs.contentWrapper === e.target || this.$refs.contentWrapper.contains(e.target))
                 ) {
@@ -116,15 +117,9 @@
     }
 
     .content-wrapper {
-        position: absolute;
-        border: 1px solid $border-color;
-        border-radius: $border-radius;
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-        max-width: 20em;
-        word-break: break-all;
-        padding: .5em 1em;
-        background: white;
-
+        position: absolute; border: 1px solid $border-color; border-radius: $border-radius;
+         box-shadow: 0 0 3px rgba(0, 0, 0, 0.5); max-width: 20em; word-break: break-all; padding: .5em 1em; 
+         background: white;
         &::before, &::after {
             content: '';
             display: block;

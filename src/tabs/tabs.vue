@@ -44,7 +44,6 @@ export default {
         });
       }
     });
-    console.log(this.$props);
   }
 };
 </script>
