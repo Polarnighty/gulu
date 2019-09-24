@@ -22,13 +22,15 @@ export default {
 
 
 //helpers 新建一个函数
-function createToast({Vue, message, propsData, onClose}) {
+function createToast({
+    Vue,
+    message,
+    propsData,
+    onClose
+}) {
     let Constructor = Vue.extend(Toast)
     let toast = new Constructor({
         propsData: propsData
-        //     {
-        //     closeButton: toastOptions.closeButton
-        // }
     })
     toast.$slots.default = [message]
     toast.$mount()
@@ -36,5 +38,3 @@ function createToast({Vue, message, propsData, onClose}) {
     document.body.appendChild(toast.$el)
     return toast
 }
-
-

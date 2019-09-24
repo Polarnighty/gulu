@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scope>
-@import "var";
+$border-radius: 4px;
 .g-button-group {
   display: inline-flex;
   vertical-align: top;
